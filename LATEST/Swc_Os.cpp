@@ -8,8 +8,9 @@
 /*****************************************************/
 #include "Swc_Os.h"
 
+#include "NvM_SchM.h"
+
 #include "EcuM.h"
-#include "NvM.h"
 
 /*****************************************************/
 /* #DEFINES                                          */
@@ -47,7 +48,7 @@ FUNC(void, SWC_OS_CODE) class_Swc_Os::ShutdownHook(void){
 
 FUNC(void, SWC_OS_CODE) class_Swc_Os::TASK_Idle(void){
    EcuM.MainFunction();
-   NvM.MainFunction();
+   SchM_Client_ptr_NvM->MainFunction();
 }
 
 /*****************************************************/
