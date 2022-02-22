@@ -1,0 +1,34 @@
+add_library(
+   SwcServiceOs
+   SwcServiceOs.cpp
+)
+
+include_directories(
+   ../../BswAUTOSAR_Service_BswM/LATEST
+   ../../BswAUTOSAR_Service_Com/LATEST
+   ../../BswAUTOSAR_Service_ComM/LATEST
+   ../../BswAUTOSAR_Service_Csm/LATEST
+   ../../BswAUTOSAR_Service_Dcm/LATEST
+   ../../BswAUTOSAR_Service_Dem/LATEST
+   ../../BswAUTOSAR_Service_Det/LATEST
+   ../../BswAUTOSAR_Service_EcuM/LATEST
+   ../../BswAUTOSAR_Service_FiM/LATEST
+   ../../BswAUTOSAR_Service_Nm/LATEST
+   ../../BswAUTOSAR_Service_NvM/LATEST
+   ../../BswAUTOSAR_Service_Os/LATEST
+   ../../BswAUTOSAR_Service_PduR/LATEST
+   ../../BswAUTOSAR_Service_SchM/LATEST
+   ../../BswAUTOSAR_Service_SecOC/LATEST
+   ../../BswAUTOSAR_Service_SokFm/LATEST
+   ../../BswAUTOSAR_Service_StartUp/LATEST
+   ../../BswAUTOSAR_Service_StbM/LATEST
+   ../../BswAUTOSAR_Service_Vkms/LATEST
+   ../../BswAUTOSAR_Service_WdgM/LATEST
+   ../../common/LATEST
+   ../../common/LATEST/Compiler_Abstraction_GNU/LATEST
+   ../../Rte/LATEST
+   ../../SwcApplFoc/LATEST
+   ../../SwcServiceEcuM/LATEST
+   ../../SwcServiceOs/LATEST
+)
+

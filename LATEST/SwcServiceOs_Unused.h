@@ -1,13 +1,14 @@
 #pragma once
 /*****************************************************/
-/* File   : Swc_Os.h                                 */
+/* File   : SwcServiceOs_Unused.h                          */
 /* Author : Naagraaj HM                              */
 /*****************************************************/
 
 /*****************************************************/
 /* #INCLUDES                                         */
 /*****************************************************/
-#include "Compiler_Cfg_Os.h"
+#include "Std_Types.h"
+#include "Compiler_Cfg_SwcServiceOs.h"
 
 /*****************************************************/
 /* #DEFINES                                          */
@@ -20,14 +21,14 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class interface_Swc_Os{
+class class_SwcServiceOs_Unused{
    public:
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-      FUNC(void, OS_CODE) StartupHook  (void);
-      FUNC(void, OS_CODE) ShutdownHook (void);
-      FUNC(void, OS_CODE) TASK_Idle    (void);
+      FUNC(void, SWCSERVICEOS_CODE) StartupHook  (void);
+      FUNC(void, SWCSERVICEOS_CODE) ShutdownHook (void);
+      FUNC(void, SWCSERVICEOS_CODE) TASK_Idle    (void);
 };
 
 /*****************************************************/
@@ -41,7 +42,7 @@ class interface_Swc_Os{
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern interface_Swc_Os *Os_Client_ptr_Swc_Os;
+//extern class_SwcServiceOs SwcServiceOs;
 
 /*****************************************************/
 /* EOF                                               */
