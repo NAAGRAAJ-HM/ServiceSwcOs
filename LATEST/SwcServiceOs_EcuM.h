@@ -27,8 +27,8 @@ class interface_SwcServiceOs_EcuM : public interface_EcuM_Client{
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-      FUNC(void, SWCSERVICEOS_CODE) InitFunction   (void);
-      FUNC(void, SWCSERVICEOS_CODE) DeInitFunction (void);
+      virtual FUNC(void, SWCSERVICEOS_CODE) InitFunction   (void) = 0;
+      virtual FUNC(void, SWCSERVICEOS_CODE) DeInitFunction (void) = 0;
 };
 
 /*****************************************************/
