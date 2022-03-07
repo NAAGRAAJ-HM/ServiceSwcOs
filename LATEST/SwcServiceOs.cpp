@@ -28,8 +28,6 @@
 /*****************************************************/
 class module_SwcServiceOs:
       public abstract_module
-   ,  public interface_SwcServiceOs_EcuM
-   ,  public interface_SwcServiceOs_SchM
    ,  public interface_SwcServiceOs_Os
 {
    public:
@@ -53,9 +51,9 @@ class module_SwcServiceOs:
 /* OBJECTS                                           */
 /*****************************************************/
 module_SwcServiceOs SwcServiceOs;
-
-interface_SwcServiceOs_EcuM *EcuM_Client_ptr_SwcServiceOs = &SwcServiceOs;
-interface_SwcServiceOs_SchM *SchM_Client_ptr_SwcServiceOs = &SwcServiceOs;
+infEcuMClient*      gptrinfEcuMClient_SwcServiceOs = &SwcServiceOs;
+infSchMClient*      gptrinfSchMClient_SwcServiceOs = &SwcServiceOs;
+interface_SwcServiceOs_Os   *Os_Client_ptr_SwcServiceOs   = &SwcServiceOs;
 
 /*****************************************************/
 /* FUNCTIONS                                         */

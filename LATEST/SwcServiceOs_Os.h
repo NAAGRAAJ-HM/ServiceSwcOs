@@ -25,9 +25,9 @@ class interface_SwcServiceOs_Os{
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-      FUNC(void, OS_CODE) StartupHook  (void);
-      FUNC(void, OS_CODE) ShutdownHook (void);
-      FUNC(void, OS_CODE) TASK_Idle    (void);
+      virtual FUNC(void, OS_CODE) StartupHook  (void) = 0;
+      virtual FUNC(void, OS_CODE) ShutdownHook (void) = 0;
+      virtual FUNC(void, OS_CODE) TASK_Idle    (void) = 0;
 };
 
 /*****************************************************/

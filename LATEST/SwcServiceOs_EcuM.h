@@ -9,8 +9,6 @@
 /*****************************************************/
 #include "Compiler_Cfg_SwcServiceOs.h"
 
-#include "EcuM_Client.h"
-
 /*****************************************************/
 /* #DEFINES                                          */
 /*****************************************************/
@@ -22,14 +20,6 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class interface_SwcServiceOs_EcuM : public interface_EcuM_Client{
-   public:
-/*****************************************************/
-/* FUNCTIONS                                         */
-/*****************************************************/
-      virtual FUNC(void, SWCSERVICEOS_CODE) InitFunction   (void) = 0;
-      virtual FUNC(void, SWCSERVICEOS_CODE) DeInitFunction (void) = 0;
-};
 
 /*****************************************************/
 /* CONSTS                                            */
@@ -42,7 +32,11 @@ class interface_SwcServiceOs_EcuM : public interface_EcuM_Client{
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern interface_SwcServiceOs_EcuM *EcuM_Client_ptr_SwcServiceOs;
+extern infEcuMClient *gptrinfEcuMClient_SwcServiceOs;
+
+/*****************************************************/
+/* FUNCTIONS                                         */
+/*****************************************************/
 
 /*****************************************************/
 /* EOF                                               */
