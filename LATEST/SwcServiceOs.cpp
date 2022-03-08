@@ -28,7 +28,7 @@
 /*****************************************************/
 class module_SwcServiceOs:
       public abstract_module
-   ,  public interface_SwcServiceOs_Os
+   ,  public infSwcServiceOs_Os
 {
    public:
       FUNC(void, OS_CODE) InitFunction   (void);
@@ -53,7 +53,7 @@ class module_SwcServiceOs:
 module_SwcServiceOs SwcServiceOs;
 infEcuMClient*      gptrinfEcuMClient_SwcServiceOs = &SwcServiceOs;
 infSchMClient*      gptrinfSchMClient_SwcServiceOs = &SwcServiceOs;
-interface_SwcServiceOs_Os   *Os_Client_ptr_SwcServiceOs   = &SwcServiceOs;
+infSwcServiceOs_Os* gptrinfSwcServiceOs_Os;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
@@ -74,8 +74,8 @@ FUNC(void, OS_CODE) module_SwcServiceOs::ShutdownHook(void){
 }
 
 FUNC(void, OS_CODE) module_SwcServiceOs::TASK_Idle(void){
-   SchM_Client_ptr_EcuM->MainFunction();
-   SchM_Client_ptr_NvM->MainFunction();
+   gptrinfSchMClient_EcuM->MainFunction();
+   gptrinfSchMClient_NvM->MainFunction();
 }
 
 /*****************************************************/

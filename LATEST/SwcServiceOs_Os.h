@@ -20,7 +20,7 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class interface_SwcServiceOs_Os{
+class infSwcServiceOs_Os{
    public:
 /*****************************************************/
 /* FUNCTIONS                                         */
@@ -41,7 +41,7 @@ class interface_SwcServiceOs_Os{
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern interface_SwcServiceOs_Os *Os_Client_ptr_SwcServiceOs_Os;
+extern infSwcServiceOs_Os* gptrinfSwcServiceOs_Os;
 
 /*****************************************************/
 /* EOF                                               */
