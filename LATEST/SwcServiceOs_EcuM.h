@@ -32,7 +32,7 @@
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern infEcuMClient *gptrinfEcuMClient_SwcServiceOs;
+extern infEcuMClient* gptrinfEcuMClient_SwcServiceOs;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
