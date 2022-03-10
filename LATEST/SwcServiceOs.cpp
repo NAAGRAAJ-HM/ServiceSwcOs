@@ -7,10 +7,10 @@
 /* #INCLUDES                                         */
 /*****************************************************/
 #include "module.h"
-#include "SwcServiceOs_EcuM.h"
-#include "SwcServiceOs_SchM.h"
-#include "SwcServiceOs_Os.h"
-#include "SwcServiceOs_Unused.h"
+#include "infSwcServiceOs_EcuM.h"
+#include "infSwcServiceOs_SchM.h"
+#include "infSwcServiceOs_Os.h"
+#include "infSwcServiceOs_Unused.h"
 
 #include "NvM_SchM.h"
 #include "EcuM_SchM.h"
@@ -33,6 +33,7 @@ class module_SwcServiceOs:
    public:
       FUNC(void, OS_CODE) InitFunction   (void);
       FUNC(void, OS_CODE) DeInitFunction (void);
+      FUNC(void, OS_CODE) GetVersionInfo (void);
       FUNC(void, OS_CODE) MainFunction   (void);
       FUNC(void, OS_CODE) StartupHook    (void);
       FUNC(void, OS_CODE) ShutdownHook   (void);
@@ -52,6 +53,7 @@ class module_SwcServiceOs:
 /*****************************************************/
 module_SwcServiceOs SwcServiceOs;
 infEcuMClient*      gptrinfEcuMClient_SwcServiceOs = &SwcServiceOs;
+infDcmClient*       gptrinfDcmClient_SwcServiceOs  = &SwcServiceOs;
 infSchMClient*      gptrinfSchMClient_SwcServiceOs = &SwcServiceOs;
 infSwcServiceOs_Os* gptrinfSwcServiceOs_Os;
 
@@ -62,6 +64,9 @@ FUNC(void, OS_CODE) module_SwcServiceOs::InitFunction(void){
 }
 
 FUNC(void, OS_CODE) module_SwcServiceOs::DeInitFunction(void){
+}
+
+FUNC(void, OS_CODE) module_SwcServiceOs::GetVersionInfo(void){
 }
 
 FUNC(void, OS_CODE) module_SwcServiceOs::MainFunction(void){
