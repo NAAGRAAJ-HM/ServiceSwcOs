@@ -1,6 +1,6 @@
 #pragma once
 /*****************************************************/
-/* File   : SwcServiceOs_SchM.h                      */
+/* File   : infSwcServiceOs_SchM.h                   */
 /* Author : Naagraaj HM                              */
 /*****************************************************/
 
