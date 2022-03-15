@@ -32,7 +32,7 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-extern infDcmClient* gptrinfDcmClient_SwcServiceOs;
+extern CONSTP2VAR(infDcmClient, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfDcmClient_SwcServiceOs;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
