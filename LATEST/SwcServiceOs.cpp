@@ -6,6 +6,8 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "infSwcServiceOs_Version.h"
+
 #include "module.h"
 #include "infSwcServiceOs_EcuM.h"
 #include "infSwcServiceOs_Dcm.h"
