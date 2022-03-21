@@ -6,9 +6,8 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "infSwcServiceOs_Version.h"
-
 #include "module.h"
+#include "infSwcServiceOs_Version.h"
 #include "infSwcServiceOs_EcuM.h"
 #include "infSwcServiceOs_Dcm.h"
 #include "infSwcServiceOs_SchM.h"
@@ -50,32 +49,21 @@ class module_SwcServiceOs:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-
-/******************************************************************************/
-/* FUNCTIONS                                                                  */
-/******************************************************************************/
-
-/******************************************************************************/
-/* EOF                                                                        */
-/******************************************************************************/
-
-
-/*****************************************************/
-/* OBJECTS                                           */
-/*****************************************************/
 VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs;
 CONSTP2VAR(infEcuMClient, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfEcuMClient_SwcServiceOs = &SwcServiceOs;
 CONSTP2VAR(infDcmClient,  SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfDcmClient_SwcServiceOs  = &SwcServiceOs;
 CONSTP2VAR(infSchMClient, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSchMClient_SwcServiceOs = &SwcServiceOs;
 infSwcServiceOs_Os* gptrinfSwcServiceOs_Os;
 
-/*****************************************************/
-/* FUNCTIONS                                         */
-/*****************************************************/
+/******************************************************************************/
+/* FUNCTIONS                                                                  */
+/******************************************************************************/
 FUNC(void, OS_CODE) module_SwcServiceOs::InitFunction(void){
+   SwcServiceOs.IsInitDone = E_OK;
 }
 
 FUNC(void, OS_CODE) module_SwcServiceOs::DeInitFunction(void){
+   SwcServiceOs.IsInitDone = E_NOT_OK;
 }
 
 FUNC(void, OS_CODE) module_SwcServiceOs::GetVersionInfo(void){
@@ -100,7 +88,7 @@ FUNC(void, OS_CODE) module_SwcServiceOs::TASK_Idle(void){
 
 #include "SwcServiceOs_Unused.h"
 
-/*****************************************************/
-/* EOF                                               */
-/*****************************************************/
+/******************************************************************************/
+/* EOF                                                                        */
+/******************************************************************************/
 
