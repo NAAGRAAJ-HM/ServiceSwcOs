@@ -7,7 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "module.h"
-#include "infSwcServiceOs_Version.h"
+//#include "SwcServiceOs_Cfg.h"
 #include "infSwcServiceOs_EcuM.h"
 #include "infSwcServiceOs_Dcm.h"
 #include "infSwcServiceOs_SchM.h"
@@ -16,10 +16,19 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
+#define SWCSERVICEOS_AR_RELEASE_MAJOR_VERSION                                  4
+#define SWCSERVICEOS_AR_RELEASE_MINOR_VERSION                                  3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
+#if(SWCSERVICEOS_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION)
+   #error "Incompatible SWCSERVICEOS_AR_RELEASE_MAJOR_VERSION!"
+#endif
+
+#if(SWCSERVICEOS_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION)
+   #error "Incompatible SWCSERVICEOS_AR_RELEASE_MINOR_VERSION!"
+#endif
 
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
@@ -67,6 +76,11 @@ FUNC(void, OS_CODE) module_SwcServiceOs::DeInitFunction(void){
 }
 
 FUNC(void, OS_CODE) module_SwcServiceOs::GetVersionInfo(void){
+#if(STD_ON == SwcServiceOs_DevErrorDetect)
+//TBD: API parameter check
+   Det_ReportError(
+   );
+#endif
 }
 
 FUNC(void, OS_CODE) module_SwcServiceOs::MainFunction(void){
