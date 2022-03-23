@@ -45,6 +45,16 @@ class module_SwcServiceOs:
       FUNC(void, OS_CODE) StartupHook    (void);
       FUNC(void, OS_CODE) ShutdownHook   (void);
       FUNC(void, OS_CODE) TASK_Idle      (void);
+
+   private:
+      CONST(Std_TypeVersionInfo, SWCSERVICEOS_CONST) VersionInfo = {
+            0x0000
+         ,  0xFFFF
+         ,  0x01
+         ,  '0'
+         ,  '1'
+         ,  '0'
+      };
 };
 
 /******************************************************************************/
