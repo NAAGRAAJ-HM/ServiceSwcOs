@@ -7,7 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "module.h"
-//#include "SwcServiceOs_Cfg.h"
+//#include "CfgSwcServiceOs.h"
 #include "infSwcServiceOs_EcuM.h"
 #include "infSwcServiceOs_Dcm.h"
 #include "infSwcServiceOs_SchM.h"
