@@ -6,12 +6,12 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "module.h"
-//#include "CfgSwcServiceOs.h"
-#include "infSwcServiceOs_EcuM.h"
-#include "infSwcServiceOs_Dcm.h"
-#include "infSwcServiceOs_SchM.h"
-#include "infSwcServiceOs_Os.h"
+#include "module.hpp"
+//#include "CfgSwcServiceOs.hpp"
+#include "infSwcServiceOs_EcuM.hpp"
+#include "infSwcServiceOs_Dcm.hpp"
+#include "infSwcServiceOs_SchM.hpp"
+#include "infSwcServiceOs_Os.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -102,15 +102,15 @@ FUNC(void, OS_CODE) module_SwcServiceOs::StartupHook(void){
 FUNC(void, OS_CODE) module_SwcServiceOs::ShutdownHook(void){
 }
 
-#include "infNvM_SchM.h"
-#include "infEcuM_SchM.h"
+#include "infNvM_SchM.hpp"
+#include "infEcuM_SchM.hpp"
 
 FUNC(void, OS_CODE) module_SwcServiceOs::TASK_Idle(void){
    gptrinfSchMClient_EcuM->MainFunction();
    gptrinfSchMClient_NvM->MainFunction();
 }
 
-#include "SwcServiceOs_Unused.h"
+#include "SwcServiceOs_Unused.hpp"
 
 /******************************************************************************/
 /* EOF                                                                        */
