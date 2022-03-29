@@ -7,7 +7,6 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "module.hpp"
-//#include "CfgSwcServiceOs.hpp"
 #include "infSwcServiceOs_EcuM.hpp"
 #include "infSwcServiceOs_Dcm.hpp"
 #include "infSwcServiceOs_SchM.hpp"
@@ -38,41 +37,45 @@ class module_SwcServiceOs:
    ,  public infSwcServiceOs_Os
 {
    public:
+      module_SwcServiceOs(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
+      }
       FUNC(void, SWCSERVICEOS_CODE) InitFunction   (void);
       FUNC(void, SWCSERVICEOS_CODE) DeInitFunction (void);
-      FUNC(void, SWCSERVICEOS_CODE) GetVersionInfo (void);
       FUNC(void, SWCSERVICEOS_CODE) MainFunction   (void);
+
       FUNC(void, SWCSERVICEOS_CODE) StartupHook    (void);
       FUNC(void, SWCSERVICEOS_CODE) ShutdownHook   (void);
       FUNC(void, SWCSERVICEOS_CODE) TASK_Idle      (void);
-
-   private:
-      CONST(Std_TypeVersionInfo, SWCSERVICEOS_CONST) VersionInfo = {
-            0x0000
-         ,  0xFFFF
-         ,  0x01
-         ,  '0'
-         ,  '1'
-         ,  '0'
-      };
 };
+
+extern VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
+CONSTP2VAR(infEcuMClient,      SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfEcuMClient_SwcServiceOs = &SwcServiceOs;
+CONSTP2VAR(infDcmClient,       SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfDcmClient_SwcServiceOs  = &SwcServiceOs;
+CONSTP2VAR(infSchMClient,      SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSchMClient_SwcServiceOs = &SwcServiceOs;
+CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcServiceOs_Os         = &SwcServiceOs;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
 /******************************************************************************/
+//#include "CfgSwcServiceOs.hpp"
 
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs;
-CONSTP2VAR(infEcuMClient, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfEcuMClient_SwcServiceOs = &SwcServiceOs;
-CONSTP2VAR(infDcmClient,  SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfDcmClient_SwcServiceOs  = &SwcServiceOs;
-CONSTP2VAR(infSchMClient, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSchMClient_SwcServiceOs = &SwcServiceOs;
-CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcServiceOs_Os    = &SwcServiceOs;
+VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs(
+   {
+         0x0000
+      ,  0xFFFF
+      ,  0x01
+      ,  '0'
+      ,  '1'
+      ,  '0'
+   }
+);
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -83,14 +86,6 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(void){
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::DeInitFunction(void){
    SwcServiceOs.IsInitDone = E_NOT_OK;
-}
-
-FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::GetVersionInfo(void){
-#if(STD_ON == SwcServiceOs_DevErrorDetect)
-//TBD: API parameter check
-   Det_ReportError(
-   );
-#endif
 }
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::MainFunction(void){
