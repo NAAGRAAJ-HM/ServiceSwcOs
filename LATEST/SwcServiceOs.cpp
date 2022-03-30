@@ -6,7 +6,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "module.hpp"
+#include "Module.hpp"
 #include "infSwcServiceOs_EcuM.hpp"
 #include "infSwcServiceOs_Dcm.hpp"
 #include "infSwcServiceOs_SchM.hpp"
@@ -39,6 +39,9 @@ class module_SwcServiceOs:
    public:
       module_SwcServiceOs(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
       }
+      FUNC(void, _CODE) InitFunction(
+         CONSTP2CONST(CfgModule_TypeAbstract, _CONFIG_DATA, _APPL_CONST) lptrCfgModule
+      );
       FUNC(void, SWCSERVICEOS_CODE) InitFunction   (void);
       FUNC(void, SWCSERVICEOS_CODE) DeInitFunction (void);
       FUNC(void, SWCSERVICEOS_CODE) MainFunction   (void);
@@ -80,7 +83,19 @@ VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs(
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(void){
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
+   CONSTP2CONST(CfgSwcServiceOs_Type, CFGSWCSERVICEOS_CONFIG_DATA, CFGSWCSERVICEOS_APPL_CONST) lptrCfgSwcServiceOs
+){
+   if(NULL_PTR == lptrCfgSwcServiceOs){
+#if(STD_ON == SwcServiceOs_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+// check lptrCfgSwcServiceOs for memory faults
+// use PBcfg_SwcServiceOs as back-up configuration
+   }
    SwcServiceOs.IsInitDone = E_OK;
 }
 
