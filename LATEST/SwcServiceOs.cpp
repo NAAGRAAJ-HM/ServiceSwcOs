@@ -39,10 +39,9 @@ class module_SwcServiceOs:
    public:
       module_SwcServiceOs(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
       }
-      FUNC(void, _CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, _CONFIG_DATA, _APPL_CONST) lptrCfgModule
+      FUNC(void, SWCSERVICEOS_CODE) InitFunction(
+         CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEOS_CONFIG_DATA, SWCSERVICEOS_APPL_CONST) lptrCfgModule
       );
-      FUNC(void, SWCSERVICEOS_CODE) InitFunction   (void);
       FUNC(void, SWCSERVICEOS_CODE) DeInitFunction (void);
       FUNC(void, SWCSERVICEOS_CODE) MainFunction   (void);
 
@@ -84,23 +83,39 @@ VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs(
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
-   CONSTP2CONST(CfgSwcServiceOs_Type, CFGSWCSERVICEOS_CONFIG_DATA, CFGSWCSERVICEOS_APPL_CONST) lptrCfgSwcServiceOs
+   CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEOS_CONFIG_DATA, SWCSERVICEOS_APPL_CONST) lptrCfgModule
 ){
-   if(NULL_PTR == lptrCfgSwcServiceOs){
+   if(E_OK == IsInitDone){
 #if(STD_ON == SwcServiceOs_DevErrorDetect)
       Det_ReportError(
       );
 #endif
    }
    else{
-// check lptrCfgSwcServiceOs for memory faults
+      if(NULL_PTR == lptrCfgModule){
+#if(STD_ON == SwcServiceOs_DevErrorDetect)
+         Det_ReportError(
+         );
+#endif
+      }
+      else{
+// check lptrCfgModule for memory faults
 // use PBcfg_SwcServiceOs as back-up configuration
+      }
+      IsInitDone = E_OK;
    }
-   SwcServiceOs.IsInitDone = E_OK;
 }
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::DeInitFunction(void){
-   SwcServiceOs.IsInitDone = E_NOT_OK;
+   if(E_OK != IsInitDone){
+#if(STD_ON == SwcServiceOs_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+      IsInitDone = E_NOT_OK;
+   }
 }
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::MainFunction(void){
