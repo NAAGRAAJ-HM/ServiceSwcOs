@@ -85,6 +85,7 @@ VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs(
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
    CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEOS_CONFIG_DATA, SWCSERVICEOS_APPL_CONST) lptrCfgModule
 ){
+#if(STD_ON == SwcServiceOs_InitCheck)
    if(E_OK == IsInitDone){
 #if(STD_ON == SwcServiceOs_DevErrorDetect)
       Det_ReportError(
@@ -92,6 +93,7 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
 #endif
    }
    else{
+#endif
       if(NULL_PTR == lptrCfgModule){
 #if(STD_ON == SwcServiceOs_DevErrorDetect)
          Det_ReportError(
@@ -103,10 +105,13 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
 // use PBcfg_SwcServiceOs as back-up configuration
       }
       IsInitDone = E_OK;
+#if(STD_ON == SwcServiceOs_InitCheck)
    }
+#endif
 }
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::DeInitFunction(void){
+#if(STD_ON == SwcServiceOs_InitCheck)
    if(E_OK != IsInitDone){
 #if(STD_ON == SwcServiceOs_DevErrorDetect)
       Det_ReportError(
@@ -114,11 +119,26 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::DeInitFunction(void){
 #endif
    }
    else{
+#endif
       IsInitDone = E_NOT_OK;
+#if(STD_ON == SwcServiceOs_InitCheck)
    }
+#endif
 }
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::MainFunction(void){
+#if(STD_ON == SwcServiceOs_InitCheck)
+   if(E_OK != IsInitDone){
+#if(STD_ON == SwcServiceOs_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+#endif
+#if(STD_ON == SwcServiceOs_InitCheck)
+   }
+#endif
 }
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::StartupHook(void){
