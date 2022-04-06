@@ -15,18 +15,18 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SWCSERVICEOS_AR_RELEASE_MAJOR_VERSION                                  4
-#define SWCSERVICEOS_AR_RELEASE_MINOR_VERSION                                  3
+#define SWCSERVICEOS_AR_RELEASE_VERSION_MAJOR                                  4
+#define SWCSERVICEOS_AR_RELEASE_VERSION_MINOR                                  3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
-#if(SWCSERVICEOS_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION)
-   #error "Incompatible SWCSERVICEOS_AR_RELEASE_MAJOR_VERSION!"
+#if(SWCSERVICEOS_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
+   #error "Incompatible SWCSERVICEOS_AR_RELEASE_VERSION_MAJOR!"
 #endif
 
-#if(SWCSERVICEOS_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION)
-   #error "Incompatible SWCSERVICEOS_AR_RELEASE_MINOR_VERSION!"
+#if(SWCSERVICEOS_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
+   #error "Incompatible SWCSERVICEOS_AR_RELEASE_VERSION_MINOR!"
 #endif
 
 /******************************************************************************/
@@ -70,8 +70,10 @@ CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcS
 /******************************************************************************/
 VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs(
    {
-         0x0000
-      ,  0xFFFF
+         SWCSERVICEOS_AR_RELEASE_VERSION_MAJOR
+      ,  SWCSERVICEOS_AR_RELEASE_VERSION_MINOR
+      ,  0x00
+      ,  0xFF
       ,  0x01
       ,  '0'
       ,  '1'
