@@ -108,8 +108,8 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
             lptrCfg = lptrCfgModule;
          }
          else{
-// use PBcfg_CanIf as back-up configuration
-            lptrCfg = PBcfg_CanIf;
+// use PBcfgCanIf as back-up configuration
+            lptrCfg = &PBcfgSwcServiceOs;
          }
       }
       IsInitDone = E_OK;
