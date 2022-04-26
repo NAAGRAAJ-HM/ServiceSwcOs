@@ -32,9 +32,17 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+class class_SwcServiceOs_Functionality{
+   public:
+      FUNC(void, SWCSERVICEOS_CODE) StartupHook  (void);
+      FUNC(void, SWCSERVICEOS_CODE) ShutdownHook (void);
+      FUNC(void, SWCSERVICEOS_CODE) TASK_Idle    (void);
+};
+
 class module_SwcServiceOs:
       public abstract_module
    ,  public infSwcServiceOs_Os
+   ,  public class_SwcServiceOs_Functionality
 {
    public:
       module_SwcServiceOs(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
@@ -91,6 +99,10 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
    if(E_OK == IsInitDone){
 #if(STD_ON == SwcServiceOs_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -99,6 +111,10 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
       if(NULL_PTR == lptrCfgModule){
 #if(STD_ON == SwcServiceOs_DevErrorDetect)
          Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
          );
 #endif
       }
@@ -123,6 +139,10 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::DeInitFunction(void){
    if(E_OK != IsInitDone){
 #if(STD_ON == SwcServiceOs_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -139,6 +159,10 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::MainFunction(void){
    if(E_OK != IsInitDone){
 #if(STD_ON == SwcServiceOs_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -162,13 +186,6 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_Idle(void){
    gptrinfSchMClient_EcuM->MainFunction();
    gptrinfSchMClient_NvM->MainFunction();
 }
-
-class class_SwcServiceOs_Unused{
-   public:
-      FUNC(void, SWCSERVICEOS_CODE) StartupHook  (void);
-      FUNC(void, SWCSERVICEOS_CODE) ShutdownHook (void);
-      FUNC(void, SWCSERVICEOS_CODE) TASK_Idle    (void);
-};
 
 /******************************************************************************/
 /* EOF                                                                        */
