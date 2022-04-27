@@ -32,13 +32,6 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-class class_SwcServiceOs_Functionality{
-   public:
-      FUNC(void, SWCSERVICEOS_CODE) StartupHook  (void);
-      FUNC(void, SWCSERVICEOS_CODE) ShutdownHook (void);
-      FUNC(void, SWCSERVICEOS_CODE) TASK_Idle    (void);
-};
-
 class module_SwcServiceOs:
       public abstract_module
    ,  public infSwcServiceOs_Os
