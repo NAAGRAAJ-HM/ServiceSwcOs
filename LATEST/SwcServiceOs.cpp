@@ -7,6 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
+#include "SwcServiceOs_core.hpp"
 #include "infSwcServiceOs_EcuM.hpp"
 #include "infSwcServiceOs_Dcm.hpp"
 #include "infSwcServiceOs_SchM.hpp"

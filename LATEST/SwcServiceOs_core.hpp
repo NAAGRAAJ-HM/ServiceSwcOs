@@ -7,10 +7,20 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "CompilerCfg_SwcServiceOs.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
+#define SWCSERVICEOS_COREFUNCTIONALITIES                                       \
+              FUNC(void, SWCSERVICEOS_CODE) StartupHook  (void);               \
+              FUNC(void, SWCSERVICEOS_CODE) ShutdownHook (void);               \
+              FUNC(void, SWCSERVICEOS_CODE) TASK_Idle    (void);               \
+
+#define SWCSERVICEOS_COREFUNCTIONALITIES_VIRTUAL                               \
+      virtual FUNC(void, SWCSERVICEOS_CODE) StartupHook  (void) = 0;           \
+      virtual FUNC(void, SWCSERVICEOS_CODE) ShutdownHook (void) = 0;           \
+      virtual FUNC(void, SWCSERVICEOS_CODE) TASK_Idle    (void) = 0;           \
 
 /******************************************************************************/
 /* MACROS                                                                     */
@@ -21,9 +31,7 @@
 /******************************************************************************/
 class class_SwcServiceOs_Functionality{
    public:
-      FUNC(void, SWCSERVICEOS_CODE) StartupHook  (void);
-      FUNC(void, SWCSERVICEOS_CODE) ShutdownHook (void);
-      FUNC(void, SWCSERVICEOS_CODE) TASK_Idle    (void);
+      SWCSERVICEOS_COREFUNCTIONALITIES_VIRTUAL
 };
 
 /******************************************************************************/
