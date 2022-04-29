@@ -1,26 +1,20 @@
 #pragma once
 /******************************************************************************/
-/* File   : SwcServiceOs_core.hpp                                             */
+/* File   : infSwcServiceOs.hpp                                               */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "CompilerCfg_SwcServiceOs.hpp"
+#include "infSwcServiceOs_EcuM.hpp"
+#include "infSwcServiceOs_Dcm.hpp"
+#include "infSwcServiceOs_SchM.hpp"
+#include "infSwcServiceOs_Os.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SWCSERVICEOS_CORE_FUNCTIONALITIES                                      \
-              FUNC(void, SWCSERVICEOS_CODE) StartupHook  (void);               \
-              FUNC(void, SWCSERVICEOS_CODE) ShutdownHook (void);               \
-              FUNC(void, SWCSERVICEOS_CODE) TASK_Idle    (void);               \
-
-#define SWCSERVICEOS_CORE_FUNCTIONALITIES_VIRTUAL                              \
-      virtual FUNC(void, SWCSERVICEOS_CODE) StartupHook  (void) = 0;           \
-      virtual FUNC(void, SWCSERVICEOS_CODE) ShutdownHook (void) = 0;           \
-      virtual FUNC(void, SWCSERVICEOS_CODE) TASK_Idle    (void) = 0;           \
 
 /******************************************************************************/
 /* MACROS                                                                     */
@@ -29,10 +23,6 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-class class_SwcServiceOs_Functionality{
-   public:
-      SWCSERVICEOS_CORE_FUNCTIONALITIES_VIRTUAL
-};
 
 /******************************************************************************/
 /* CONSTS                                                                     */

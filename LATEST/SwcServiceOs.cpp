@@ -7,11 +7,9 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
+//#include "CfgSwcServiceOs.hpp"
 #include "SwcServiceOs_core.hpp"
-#include "infSwcServiceOs_EcuM.hpp"
-#include "infSwcServiceOs_Dcm.hpp"
-#include "infSwcServiceOs_SchM.hpp"
-#include "infSwcServiceOs_Os.hpp"
+#include "infSwcServiceOs.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -35,6 +33,7 @@
 /******************************************************************************/
 class module_SwcServiceOs:
       public abstract_module
+      //TBD: move to infxxx.hpp?
    ,  public infSwcServiceOs_Os
    ,  public class_SwcServiceOs_Functionality
 {
@@ -46,10 +45,7 @@ class module_SwcServiceOs:
       );
       FUNC(void, SWCSERVICEOS_CODE) DeInitFunction (void);
       FUNC(void, SWCSERVICEOS_CODE) MainFunction   (void);
-
-      FUNC(void, SWCSERVICEOS_CODE) StartupHook    (void);
-      FUNC(void, SWCSERVICEOS_CODE) ShutdownHook   (void);
-      FUNC(void, SWCSERVICEOS_CODE) TASK_Idle      (void);
+      SWCSERVICEOS_CORE_FUNCTIONALITIES
 };
 
 extern VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs;
@@ -65,7 +61,6 @@ CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcS
 /******************************************************************************/
 /* PARAMS                                                                     */
 /******************************************************************************/
-//#include "CfgSwcServiceOs.hpp"
 
 /******************************************************************************/
 /* OBJECTS                                                                    */
