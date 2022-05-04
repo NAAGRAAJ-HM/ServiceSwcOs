@@ -1,17 +1,13 @@
 #pragma once
 /******************************************************************************/
-/* File   : infSwcServiceOs.hpp                                               */
+/* File   : infSwcServiceOs_Det.hpp                                           */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "infSwcServiceOs_EcuM.hpp"
-#include "infSwcServiceOs_Dcm.hpp"
-#include "infSwcServiceOs_Det.hpp"
-#include "infSwcServiceOs_SchM.hpp"
-#include "infSwcServiceOs_Os.hpp"
+#include "CompilerCfg_SwcServiceOs.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -24,6 +20,9 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+typedef enum{
+      SWCSERVICEOS_E_UNINIT
+}SwcServiceOs_TypeDetErrorCode;
 
 /******************************************************************************/
 /* CONSTS                                                                     */

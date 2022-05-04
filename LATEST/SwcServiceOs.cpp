@@ -116,7 +116,7 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  0 //TBD: IdError
+         ,  SWCSERVICEOS_E_UNINIT
       );
 #endif
    }
@@ -136,7 +136,7 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::DeInitFunction(void){
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  0 //TBD: IdError
+         ,  SWCSERVICEOS_E_UNINIT
       );
 #endif
    }
@@ -155,7 +155,7 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::MainFunction(void){
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  0 //TBD: IdError
+         ,  SWCSERVICEOS_E_UNINIT
       );
 #endif
    }
