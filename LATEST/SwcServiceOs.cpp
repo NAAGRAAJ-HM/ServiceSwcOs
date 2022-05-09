@@ -7,7 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
-//#include "CfgSwcServiceOs.hpp"
+#include "CfgSwcServiceOs.hpp"
 #include "SwcServiceOs_core.hpp"
 #include "infSwcServiceOs.hpp"
 
@@ -37,6 +37,13 @@ class module_SwcServiceOs:
    ,  public infSwcServiceOs_Os
    ,  public class_SwcServiceOs_Functionality
 {
+   private:
+/******************************************************************************/
+/* OBJECTS                                                                    */
+/******************************************************************************/
+            Std_TypeReturn          IsInitDone{E_NOT_OK};
+      const CfgModule_TypeAbstract* lptrCfg{(CfgModule_TypeAbstract*)NULL_PTR};
+
    public:
       module_SwcServiceOs(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
       }
