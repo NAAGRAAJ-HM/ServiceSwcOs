@@ -9,7 +9,7 @@
 #include "Module.hpp"
 #include "CfgSwcServiceOs.hpp"
 #include "SwcServiceOs_core.hpp"
-#include "infSwcServiceOs.hpp"
+#include "infSwcServiceOs_Exp.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -32,6 +32,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_SwcServiceOs:
+   INTERFACES_EXPORTED_SWCSERVICEOS
       public abstract_module
       //TBD: move to infxxx.hpp?
    ,  public infSwcServiceOs_Os
