@@ -32,10 +32,8 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_SwcServiceOs:
-   INTERFACES_EXPORTED_SWCSERVICEOS
-      public abstract_module
-      //TBD: move to infxxx.hpp?
-   ,  public infSwcServiceOs_Os
+      INTERFACES_EXPORTED_SWCSERVICEOS
+   ,  public abstract_module
    ,  public class_SwcServiceOs_Functionality
 {
    private:
@@ -183,12 +181,29 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::StartupHook(void){
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::ShutdownHook(void){
 }
 
-#include "infNvM_SchM.hpp"
-#include "infEcuM_SchM.hpp"
+#if(STD_ON == _ReSIM)
+#include <iostream>
+using namespace std;
+static const uint32 lu32PrescaleSystemTick = 100000000;
+void TASK_1ms(void){
+   cout<<endl<<"in 1ms task...";
+// gptrinfSchMClient_EcuM->MainFunction();
+// gptrinfSchMClient_NvM->MainFunction();
+   gptrinfSchMClient_Dcm->MainFunction();
+}
+#else
+#endif
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_Idle(void){
-   gptrinfSchMClient_EcuM->MainFunction();
-   gptrinfSchMClient_NvM->MainFunction();
+#if(STD_ON == _ReSIM)
+// cout<<endl<<"in Idle task...";
+   static uint32 lu32TickSystem = 0;
+   if(lu32PrescaleSystemTick == ++lu32TickSystem){
+      lu32TickSystem = 0;
+      TASK_1ms();
+   }
+#else
+#endif
 }
 
 /******************************************************************************/
