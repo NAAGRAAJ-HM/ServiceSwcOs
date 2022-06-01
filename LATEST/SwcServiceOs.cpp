@@ -181,25 +181,60 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::StartupHook(void){
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::ShutdownHook(void){
 }
 
+#include "infSwcServiceOs_Imp.hpp"
+
 #if(STD_ON == _ReSIM)
 #include <iostream>
 using namespace std;
-static const uint32 lu32PrescaleSystemTick = 100000000;
+uint32 gu32SystemTime = 0;
+static const uint32 lu32PrescaleSystem = 100000000;
+static const uint8 lu8Prescale5ms = 5;
+static const uint8 lu8Prescale10ms = 2;
+static const uint8 lu8Prescale20ms = 2;
+static const uint8 lu8Prescale25ms = 5;
 void TASK_1ms(void){
-   cout<<endl<<"in 1ms task...";
 // gptrinfSchMClient_EcuM->MainFunction();
 // gptrinfSchMClient_NvM->MainFunction();
+   gptrinfSchMClient_PduR->MainFunction();
    gptrinfSchMClient_Dcm->MainFunction();
+}
+void TASK_5ms(void){
+}
+void TASK_10ms(void){
+}
+void TASK_20ms(void){
+}
+void TASK_25ms(void){
 }
 #else
 #endif
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_Idle(void){
 #if(STD_ON == _ReSIM)
-// cout<<endl<<"in Idle task...";
    static uint32 lu32TickSystem = 0;
-   if(lu32PrescaleSystemTick == ++lu32TickSystem){
+   static uint8 lu8Tick5ms = 0;
+   static uint8 lu8Tick10ms = 0;
+   static uint8 lu8Tick20ms = 0;
+   static uint8 lu8Tick25ms = 0;
+   if(lu32PrescaleSystem == ++lu32TickSystem){
       lu32TickSystem = 0;
+      gu32SystemTime++;
+      if(lu8Prescale5ms == ++lu8Tick5ms){
+         lu8Tick5ms = 0;
+         if(lu8Prescale25ms == ++lu8Tick25ms){
+            lu8Tick25ms = 0;
+            TASK_25ms();
+         }
+         if(lu8Prescale10ms == ++lu8Tick10ms){
+            lu8Tick10ms = 0;
+            if(lu8Prescale20ms == ++lu8Tick20ms){
+               lu8Tick20ms = 0;
+               TASK_20ms();
+            }
+            TASK_10ms();
+         }
+         TASK_5ms();
+      }
       TASK_1ms();
    }
 #else
