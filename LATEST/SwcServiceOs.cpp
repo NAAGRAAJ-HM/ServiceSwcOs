@@ -10,6 +10,7 @@
 #include "CfgSwcServiceOs.hpp"
 #include "SwcServiceOs_core.hpp"
 #include "infSwcServiceOs_Exp.hpp"
+#include "infSwcServiceOs_Imp.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -184,8 +185,6 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::StartupHook(void){
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::ShutdownHook(void){
 }
-
-#include "infSwcServiceOs_Imp.hpp"
 
 #if(STD_ON == _ReSIM)
 #include <iostream>

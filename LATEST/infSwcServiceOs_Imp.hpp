@@ -8,7 +8,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "infCanIf_SchM.hpp"
-//#include "infCanTp_SchM.hpp"
+#include "infCanTp_SchM.hpp"
 #include "infCryIf_SchM.hpp"
 #include "infEa_SchM.hpp"
 #include "infEthIf_SchM.hpp"
