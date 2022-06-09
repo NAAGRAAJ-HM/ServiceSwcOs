@@ -75,10 +75,10 @@ CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcS
 VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs(
    {
 #if(STD_ON == _ReSIM)
-   char strModuleName[6] = "ARA3";
+         "SwcServiceOs"
 #else
 #endif
-         SWCSERVICEOS_AR_RELEASE_VERSION_MAJOR
+      ,  SWCSERVICEOS_AR_RELEASE_VERSION_MAJOR
       ,  SWCSERVICEOS_AR_RELEASE_VERSION_MINOR
       ,  0x00
       ,  0xFF
