@@ -194,6 +194,7 @@ static const uint8 lu8Prescale25ms = 5;
 void TASK_1ms(void){
 // gptrinfSchMClient_EcuM->MainFunction();
 // gptrinfSchMClient_NvM->MainFunction();
+   gptrinfSchMClient_CanIf->MainFunction();
    gptrinfSchMClient_PduR->MainFunction();
    gptrinfSchMClient_Dcm->MainFunction();
 }
