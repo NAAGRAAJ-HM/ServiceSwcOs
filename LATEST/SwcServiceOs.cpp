@@ -131,7 +131,9 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
 #endif
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::DeInitFunction(void){
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::DeInitFunction(
+   void
+){
 #if(STD_ON == SwcServiceOs_InitCheck)
    if(
          E_OK
@@ -154,7 +156,9 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::DeInitFunction(void){
 #endif
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::MainFunction(void){
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::MainFunction(
+   void
+){
 #if(STD_ON == SwcServiceOs_InitCheck)
    if(
          E_OK
@@ -176,10 +180,14 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::MainFunction(void){
 #endif
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::StartupHook(void){
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::StartupHook(
+   void
+){
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::ShutdownHook(void){
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::ShutdownHook(
+   void
+){
 }
 
 #if(STD_ON == _ReSIM)
@@ -191,25 +199,37 @@ static const uint8 lu8Prescale5ms = 5;
 static const uint8 lu8Prescale10ms = 2;
 static const uint8 lu8Prescale20ms = 2;
 static const uint8 lu8Prescale25ms = 5;
-void TASK_1ms(void){
+void TASK_1ms(
+   void
+){
 // gptrinfSchMClient_EcuM->MainFunction();
 // gptrinfSchMClient_NvM->MainFunction();
    gptrinfSchMClient_CanIf->MainFunction();
    gptrinfSchMClient_PduR->MainFunction();
    gptrinfSchMClient_Dcm->MainFunction();
 }
-void TASK_5ms(void){
+void TASK_5ms(
+   void
+){
 }
-void TASK_10ms(void){
+void TASK_10ms(
+   void
+){
 }
-void TASK_20ms(void){
+void TASK_20ms(
+   void
+){
 }
-void TASK_25ms(void){
+void TASK_25ms(
+   void
+){
 }
 #else
 #endif
 
-FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_Idle(void){
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_Idle(
+   void
+){
 #if(STD_ON == _ReSIM)
    static uint32 lu32TickSystem = 0;
    static uint8 lu8Tick5ms = 0;
