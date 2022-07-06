@@ -7,9 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
-#include "CfgSwcServiceOs.hpp"
-#include "SwcServiceOs_core.hpp"
-#include "infSwcServiceOs_Exp.hpp"
+#include "SwcServiceOs.hpp"
 #include "infSwcServiceOs_Imp.hpp"
 
 /******************************************************************************/
@@ -32,26 +30,6 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-class module_SwcServiceOs:
-      INTERFACES_EXPORTED_SWCSERVICEOS
-   ,  public abstract_module
-   ,  public class_SwcServiceOs_Functionality
-{
-   private:
-/******************************************************************************/
-/* OBJECTS                                                                    */
-/******************************************************************************/
-
-   public:
-      FUNC(void, SWCSERVICEOS_CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEOS_CONFIG_DATA, SWCSERVICEOS_APPL_CONST) lptrCfgModule
-      );
-      FUNC(void, SWCSERVICEOS_CODE) DeInitFunction (void);
-      FUNC(void, SWCSERVICEOS_CODE) MainFunction   (void);
-      SWCSERVICEOS_CORE_FUNCTIONALITIES
-};
-
-extern VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
