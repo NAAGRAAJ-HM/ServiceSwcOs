@@ -7,7 +7,6 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "infSwcServiceOs_EcuM.hpp"
 #include "infSwcServiceOs_Det.hpp"
 #include "infSwcServiceOs_Os.hpp"
 

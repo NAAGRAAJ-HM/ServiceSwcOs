@@ -34,7 +34,6 @@
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-CONSTP2VAR(infEcuMClient,      SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfEcuMClient_SwcServiceOs = &SwcServiceOs;
 CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcServiceOs_Os         = &SwcServiceOs;
 
 /******************************************************************************/
