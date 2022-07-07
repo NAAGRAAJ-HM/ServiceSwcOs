@@ -35,8 +35,6 @@
 /* CONSTS                                                                     */
 /******************************************************************************/
 CONSTP2VAR(infEcuMClient,      SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfEcuMClient_SwcServiceOs = &SwcServiceOs;
-CONSTP2VAR(infDcmClient,       SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfDcmClient_SwcServiceOs  = &SwcServiceOs;
-CONSTP2VAR(infSchMClient,      SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSchMClient_SwcServiceOs = &SwcServiceOs;
 CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcServiceOs_Os         = &SwcServiceOs;
 
 /******************************************************************************/
@@ -157,14 +155,11 @@ static const uint8 lu8Prescale5ms = 5;
 static const uint8 lu8Prescale10ms = 2;
 static const uint8 lu8Prescale20ms = 2;
 static const uint8 lu8Prescale25ms = 5;
+extern void SchM_1ms(void);//TBD: inf
 void TASK_1ms(
    void
 ){
-// gptrinfSchMClient_EcuM->MainFunction();
-// gptrinfSchMClient_NvM->MainFunction();
-   gptrinfSchMClient_CanIf->MainFunction();
-   gptrinfSchMClient_PduR->MainFunction();
-   gptrinfSchMClient_Dcm->MainFunction();
+   SchM_1ms();
 }
 void TASK_5ms(
    void
