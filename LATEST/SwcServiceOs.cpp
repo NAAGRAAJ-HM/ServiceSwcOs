@@ -34,7 +34,7 @@
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcServiceOs_Os         = &SwcServiceOs;
+CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcServiceOs_Os = &SwcServiceOs;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
@@ -154,11 +154,10 @@ static const uint8 lu8Prescale5ms = 5;
 static const uint8 lu8Prescale10ms = 2;
 static const uint8 lu8Prescale20ms = 2;
 static const uint8 lu8Prescale25ms = 5;
-extern void SchM_1ms(void);//TBD: inf
 void TASK_1ms(
    void
 ){
-   SchM_1ms();
+   gptrinfSchM_SwcServiceOs->SchM_1ms();
 }
 void TASK_5ms(
    void
