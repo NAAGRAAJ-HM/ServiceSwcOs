@@ -33,7 +33,6 @@ class infSwcServiceOs_Os{
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-extern CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcServiceOs_Os;
 
 /******************************************************************************/
 /* PARAMS                                                                     */

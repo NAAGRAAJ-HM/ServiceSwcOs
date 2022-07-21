@@ -34,7 +34,6 @@
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-CONSTP2VAR(infSwcServiceOs_Os, SWCSERVICEOS_VAR, SWCSERVICEOS_CONST) gptrinfSwcServiceOs_Os = &SwcServiceOs;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
@@ -157,7 +156,7 @@ static const uint8 lu8Prescale25ms = 5;
 void TASK_1ms(
    void
 ){
-   gptrinfSchM_SwcServiceOs->SchM_1ms();
+   ((CfgSwcServiceOs_Type*)lptrCfg)->ptrinfSchM_SwcServiceOs->SchM_1ms();
 }
 void TASK_5ms(
    void
