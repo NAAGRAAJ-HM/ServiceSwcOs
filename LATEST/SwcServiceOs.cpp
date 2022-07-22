@@ -153,24 +153,29 @@ static const uint8 lu8Prescale5ms = 5;
 static const uint8 lu8Prescale10ms = 2;
 static const uint8 lu8Prescale20ms = 2;
 static const uint8 lu8Prescale25ms = 5;
-void TASK_1ms(
+
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_1ms(
    void
 ){
-   ((CfgSwcServiceOs_Type*)lptrCfg)->ptrinfSchM_SwcServiceOs->SchM_1ms();
+	lptrConstSwcServiceOs->ptrinfSchM_SwcServiceOs->SchM_1ms();
 }
-void TASK_5ms(
-   void
-){
-}
-void TASK_10ms(
-   void
-){
-}
-void TASK_20ms(
+
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_5ms(
    void
 ){
 }
-void TASK_25ms(
+
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_10ms(
+   void
+){
+}
+
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_20ms(
+   void
+){
+}
+
+FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_25ms(
    void
 ){
 }
@@ -182,10 +187,10 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_Idle(
 ){
 #if(STD_ON == _ReSIM)
    static uint32 lu32TickSystem = 0;
-   static uint8 lu8Tick5ms = 0;
-   static uint8 lu8Tick10ms = 0;
-   static uint8 lu8Tick20ms = 0;
-   static uint8 lu8Tick25ms = 0;
+   static uint8  lu8Tick5ms     = 0;
+   static uint8  lu8Tick10ms    = 0;
+   static uint8  lu8Tick20ms    = 0;
+   static uint8  lu8Tick25ms    = 0;
    if(lu32PrescaleSystem == ++lu32TickSystem){
       lu32TickSystem = 0;
       gu32SystemTime++;
