@@ -157,7 +157,7 @@ static const uint8 lu8Prescale25ms = 5;
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_1ms(
    void
 ){
-	lptrConstSwcServiceOs->ptrinfSchM_SwcServiceOs->SchM_1ms();
+	lptrConst->ptrinfSchM_SwcServiceOs->SchM_1ms();
 }
 
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::TASK_5ms(
