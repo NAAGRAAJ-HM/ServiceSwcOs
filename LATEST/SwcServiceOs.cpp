@@ -48,7 +48,8 @@ VAR(module_SwcServiceOs, SWCSERVICEOS_VAR) SwcServiceOs;
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
-   CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEOS_CONFIG_DATA, SWCSERVICEOS_APPL_CONST) lptrCfgModule
+      CONSTP2CONST(ConstModule_TypeAbstract, SWCSERVICEOS_CONST,       SWCSERVICEOS_APPL_CONST) lptrConstModule
+   ,  CONSTP2CONST(CfgModule_TypeAbstract,   SWCSERVICEOS_CONFIG_DATA, SWCSERVICEOS_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == SwcServiceOs_InitCheck)
    if(
@@ -56,8 +57,12 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
       != IsInitDone
    ){
 #endif
-      if(NULL_PTR != lptrCfgModule){
-         lptrCfg = lptrCfgModule;
+      if(
+            (NULL_PTR != lptrConstModule)
+         && (NULL_PTR != lptrCfgModule)
+      ){
+         lptrConst = (ConstSwcServiceOs_Type*)lptrConstModule;
+         lptrCfg   = lptrCfgModule;
       }
       else{
 #if(STD_ON == SwcServiceOs_DevErrorDetect)

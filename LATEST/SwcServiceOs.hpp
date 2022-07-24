@@ -32,14 +32,15 @@ class module_SwcServiceOs:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-      const ConstSwcServiceOs_Type* lptrConst;
+      const ConstSwcServiceOs_Type* lptrConst = (ConstSwcServiceOs_Type*)NULL_PTR;
 
    public:
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
       FUNC(void, SWCSERVICEOS_CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEOS_CONFIG_DATA, SWCSERVICEOS_APPL_CONST) lptrCfgModule
+            CONSTP2CONST(ConstModule_TypeAbstract, SWCSERVICEOS_CONST,       SWCSERVICEOS_APPL_CONST) lptrConstModule
+         ,  CONSTP2CONST(CfgModule_TypeAbstract,   SWCSERVICEOS_CONFIG_DATA, SWCSERVICEOS_APPL_CONST) lptrCfgModule
       );
       FUNC(void, SWCSERVICEOS_CODE) DeInitFunction (void);
       FUNC(void, SWCSERVICEOS_CODE) MainFunction   (void);
