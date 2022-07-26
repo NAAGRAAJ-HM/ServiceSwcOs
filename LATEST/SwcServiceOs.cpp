@@ -61,7 +61,7 @@ FUNC(void, SWCSERVICEOS_CODE) module_SwcServiceOs::InitFunction(
             (NULL_PTR != lptrConstModule)
          && (NULL_PTR != lptrCfgModule)
       ){
-         lptrConst = (ConstSwcServiceOs_Type*)lptrConstModule;
+         lptrConst = (const ConstSwcServiceOs_Type*)(ConstSwcServiceOs_Type*)lptrConstModule;
          lptrCfg   = lptrCfgModule;
       }
       else{
