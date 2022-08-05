@@ -13,18 +13,18 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SWCSERVICEOS_AR_RELEASE_VERSION_MAJOR                                  4
-#define SWCSERVICEOS_AR_RELEASE_VERSION_MINOR                                  3
+#define SERVICESWCOS_AR_RELEASE_VERSION_MAJOR                                  4
+#define SERVICESWCOS_AR_RELEASE_VERSION_MINOR                                  3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
-#if(SWCSERVICEOS_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
-   #error "Incompatible SWCSERVICEOS_AR_RELEASE_VERSION_MAJOR!"
+#if(SERVICESWCOS_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
+   #error "Incompatible SERVICESWCOS_AR_RELEASE_VERSION_MAJOR!"
 #endif
 
-#if(SWCSERVICEOS_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
-   #error "Incompatible SWCSERVICEOS_AR_RELEASE_VERSION_MINOR!"
+#if(SERVICESWCOS_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
+   #error "Incompatible SERVICESWCOS_AR_RELEASE_VERSION_MINOR!"
 #endif
 
 /******************************************************************************/
@@ -42,14 +42,14 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-VAR(module_ServiceSwcOs, SWCSERVICEOS_VAR) ServiceSwcOs;
+VAR(module_ServiceSwcOs, SERVICESWCOS_VAR) ServiceSwcOs;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::InitFunction(
-      CONSTP2CONST(ConstModule_TypeAbstract, SWCSERVICEOS_CONST,       SWCSERVICEOS_APPL_CONST) lptrConstModule
-   ,  CONSTP2CONST(CfgModule_TypeAbstract,   SWCSERVICEOS_CONFIG_DATA, SWCSERVICEOS_APPL_CONST) lptrCfgModule
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::InitFunction(
+      CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCOS_CONST,       SERVICESWCOS_APPL_CONST) lptrConstModule
+   ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICESWCOS_CONFIG_DATA, SERVICESWCOS_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == ServiceSwcOs_InitCheck)
    if(
@@ -83,14 +83,14 @@ FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::InitFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  SWCSERVICEOS_E_UNINIT
+         ,  SERVICESWCOS_E_UNINIT
       );
 #endif
    }
 #endif
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::DeInitFunction(
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::DeInitFunction(
    void
 ){
 #if(STD_ON == ServiceSwcOs_InitCheck)
@@ -108,14 +108,14 @@ FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::DeInitFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  SWCSERVICEOS_E_UNINIT
+         ,  SERVICESWCOS_E_UNINIT
       );
 #endif
    }
 #endif
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::MainFunction(
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::MainFunction(
    void
 ){
 #if(STD_ON == ServiceSwcOs_InitCheck)
@@ -132,19 +132,19 @@ FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::MainFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  SWCSERVICEOS_E_UNINIT
+         ,  SERVICESWCOS_E_UNINIT
       );
 #endif
    }
 #endif
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::StartupHook(
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::StartupHook(
    void
 ){
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::ShutdownHook(
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::ShutdownHook(
    void
 ){
 }
@@ -159,35 +159,35 @@ static const uint8 lu8Prescale10ms = 2;
 static const uint8 lu8Prescale20ms = 2;
 static const uint8 lu8Prescale25ms = 5;
 
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::TASK_1ms(
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_1ms(
    void
 ){
 	lptrConst->ptrinfServiceSchM_ServiceSwcOs->ServiceSchM_1ms();
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::TASK_5ms(
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_5ms(
    void
 ){
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::TASK_10ms(
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_10ms(
    void
 ){
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::TASK_20ms(
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_20ms(
    void
 ){
 }
 
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::TASK_25ms(
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_25ms(
    void
 ){
 }
 #else
 #endif
 
-FUNC(void, SWCSERVICEOS_CODE) module_ServiceSwcOs::TASK_Idle(
+FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_Idle(
    void
 ){
 #if(STD_ON == _ReSIM)

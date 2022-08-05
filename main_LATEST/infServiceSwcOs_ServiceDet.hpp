@@ -21,7 +21,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 typedef enum{
-      SWCSERVICEOS_E_UNINIT
+      SERVICESWCOS_E_UNINIT
 }ServiceSwcOs_TypeServiceDetErrorCode;
 
 /******************************************************************************/

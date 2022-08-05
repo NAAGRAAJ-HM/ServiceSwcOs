@@ -24,7 +24,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_ServiceSwcOs:
-      INTERFACES_EXPORTED_SWCSERVICEOS
+      INTERFACES_EXMCALPORTED_SERVICESWCOS
    ,  public abstract_module
    ,  public class_ServiceSwcOs_Functionality
 {
@@ -38,13 +38,13 @@ class module_ServiceSwcOs:
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-      FUNC(void, SWCSERVICEOS_CODE) InitFunction(
-            CONSTP2CONST(ConstModule_TypeAbstract, SWCSERVICEOS_CONST,       SWCSERVICEOS_APPL_CONST) lptrConstModule
-         ,  CONSTP2CONST(CfgModule_TypeAbstract,   SWCSERVICEOS_CONFIG_DATA, SWCSERVICEOS_APPL_CONST) lptrCfgModule
+      FUNC(void, SERVICESWCOS_CODE) InitFunction(
+            CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCOS_CONST,       SERVICESWCOS_APPL_CONST) lptrConstModule
+         ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICESWCOS_CONFIG_DATA, SERVICESWCOS_APPL_CONST) lptrCfgModule
       );
-      FUNC(void, SWCSERVICEOS_CODE) DeInitFunction (void);
-      FUNC(void, SWCSERVICEOS_CODE) MainFunction   (void);
-      SWCSERVICEOS_CORE_FUNCTIONALITIES
+      FUNC(void, SERVICESWCOS_CODE) DeInitFunction (void);
+      FUNC(void, SERVICESWCOS_CODE) MainFunction   (void);
+      SERVICESWCOS_CORE_FUNCTIONALITIES
 };
 
 /******************************************************************************/
@@ -58,7 +58,7 @@ class module_ServiceSwcOs:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-extern VAR(module_ServiceSwcOs, SWCSERVICEOS_VAR) ServiceSwcOs;
+extern VAR(module_ServiceSwcOs, SERVICESWCOS_VAR) ServiceSwcOs;
 
 /******************************************************************************/
 /* EOF                                                                        */

@@ -25,9 +25,9 @@ class infServiceSwcOs_ServiceOs{
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-      virtual FUNC(void, SWCSERVICEOS_CODE) StartupHook  (void) = 0;
-      virtual FUNC(void, SWCSERVICEOS_CODE) ShutdownHook (void) = 0;
-      virtual FUNC(void, SWCSERVICEOS_CODE) TASK_Idle    (void) = 0;
+      virtual FUNC(void, SERVICESWCOS_CODE) StartupHook  (void) = 0;
+      virtual FUNC(void, SERVICESWCOS_CODE) ShutdownHook (void) = 0;
+      virtual FUNC(void, SERVICESWCOS_CODE) TASK_Idle    (void) = 0;
 };
 
 /******************************************************************************/

@@ -13,7 +13,7 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define INTERFACES_EXPORTED_SWCSERVICEOS               public infServiceSwcOs_ServiceOs
+#define INTERFACES_EXMCALPORTED_SERVICESWCOS               public infServiceSwcOs_ServiceOs
 
 /******************************************************************************/
 /* MACROS                                                                     */
