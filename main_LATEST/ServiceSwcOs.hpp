@@ -24,7 +24,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_ServiceSwcOs:
-      INTERFACES_EXMCALPORTED_SERVICESWCOS
+      INTERFACES_EXPORTED_SERVICESWCOS
    ,  public abstract_module
    ,  public class_ServiceSwcOs_Functionality
 {
