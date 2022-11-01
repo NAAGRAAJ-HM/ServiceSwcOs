@@ -47,6 +47,8 @@ VAR(module_ServiceSwcOs, SERVICESWCOS_VAR) ServiceSwcOs;
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
+extern void INT_Init(void); //TBD: use interface headers as per architecture
+
 FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::InitFunction(
       CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCOS_CONST,       SERVICESWCOS_APPL_CONST) lptrConstModule
    ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICESWCOS_CONFIG_DATA, SERVICESWCOS_APPL_CONST) lptrCfgModule
@@ -74,6 +76,7 @@ FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::InitFunction(
          );
 #endif
       }
+      INT_Init();
 #if(STD_ON == ServiceSwcOs_InitCheck)
       IsInitDone = E_OK;
    }
