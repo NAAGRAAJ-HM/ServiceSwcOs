@@ -186,6 +186,7 @@ FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_20ms(
 FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_25ms(
    void
 ){
+	lptrConst->ptrinfServiceSchM_ServiceSwcOs->ServiceSchM_25ms();
 }
 #else
 #endif
