@@ -7,7 +7,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "ConstServiceSwcOs.hpp"
+#include "infServiceSwcOs_ServiceNvM_Types.hpp"
 #include "CfgServiceSwcOs.hpp"
 #include "ServiceSwcOs_core.hpp"
 #include "infServiceSwcOs_Exp.hpp"
