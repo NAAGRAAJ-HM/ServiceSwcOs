@@ -13,19 +13,10 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SERVICESWCOS_AR_RELEASE_VERSION_MAJOR                                  4
-#define SERVICESWCOS_AR_RELEASE_VERSION_MINOR                                  3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
-#if(SERVICESWCOS_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
-   #error "Incompatible SERVICESWCOS_AR_RELEASE_VERSION_MAJOR!"
-#endif
-
-#if(SERVICESWCOS_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
-   #error "Incompatible SERVICESWCOS_AR_RELEASE_VERSION_MINOR!"
-#endif
 
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
@@ -50,7 +41,7 @@ VAR(module_ServiceSwcOs, SERVICESWCOS_VAR) ServiceSwcOs;
 extern void INT_Init(void); //TBD: use interface headers as per architecture
 
 FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::InitFunction(
-      CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCOS_CONST,       SERVICESWCOS_APPL_CONST) lptrConstModule
+      CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCOS_CONST,       SERVICESWCOS_APPL_CONST) lptrNvMBlocksRomModule
    ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICESWCOS_CONFIG_DATA, SERVICESWCOS_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == ServiceSwcOs_InitCheck)
@@ -60,10 +51,10 @@ FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::InitFunction(
    ){
 #endif
       if(
-            (NULL_PTR != lptrConstModule)
+            (NULL_PTR != lptrNvMBlocksRomModule)
          && (NULL_PTR != lptrCfgModule)
       ){
-         lptrConst = (const ConstServiceSwcOs_Type*)(ConstServiceSwcOs_Type*)lptrConstModule;
+         lptrNvMBlocksRom = lptrNvMBlocksRomModule;
          lptrCfg   = lptrCfgModule;
       }
       else{
@@ -165,7 +156,7 @@ static const uint8 lu8Prescale25ms = 5;
 FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_1ms(
    void
 ){
-	lptrConst->ptrinfServiceSchM_ServiceSwcOs->ServiceSchM_1ms();
+	((NvM_BlocksRom_ServiceSwcOs_Type*)lptrNvMBlocksRom)->ptrinfServiceSchM_ServiceSwcOs->ServiceSchM_1ms();
 }
 
 FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_5ms(
@@ -184,7 +175,7 @@ FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_20ms(
 }
 
 FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_25ms(void){
-	lptrConst->ptrinfServiceSchM_ServiceSwcOs->ServiceSchM_25ms();
+	((NvM_BlocksRom_ServiceSwcOs_Type*)lptrNvMBlocksRom)->ptrinfServiceSchM_ServiceSwcOs->ServiceSchM_25ms();
 }
 #else
 #endif
