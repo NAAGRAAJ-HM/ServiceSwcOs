@@ -15,11 +15,13 @@
 class NvM_BlocksRom_ServiceSwcOs_Type:
       public ConstModule_TypeAbstract
 {
-/******************************************************************************/
-/* CONSTS                                                                     */
-/******************************************************************************/
    public:
       infServiceSchM_ServiceSwcOs* ptrinfServiceSchM_ServiceSwcOs;
+};
+
+class NvM_BlocksNv_ServiceSwcOs_Type:
+      public CfgModule_TypeAbstract
+{
 };
 
 /******************************************************************************/
