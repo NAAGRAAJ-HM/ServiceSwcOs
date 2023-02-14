@@ -146,12 +146,6 @@ FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::ShutdownHook(
 #if(STD_ON == _ReSIM)
 #include <iostream>
 using namespace std;
-uint32 gu32SystemTime = 0;
-static const uint32 lu32PrescaleSystem = 100000000;
-static const uint8 lu8Prescale5ms = 5;
-static const uint8 lu8Prescale10ms = 2;
-static const uint8 lu8Prescale20ms = 2;
-static const uint8 lu8Prescale25ms = 5;
 
 FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_1ms(
    void
@@ -177,18 +171,28 @@ FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_20ms(
 FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_25ms(void){
 	((NvM_BlocksRom_ServiceSwcOs_Type*)lptrNvMBlocksRom)->ptrinfServiceSchM_ServiceSwcOs->ServiceSchM_25ms();
 }
+
+uint32 gu32SystemTime = 0;
 #else
 #endif
 
+#include "ReSimCmd.hpp"
 FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_Idle(
    void
 ){
 #if(STD_ON == _ReSIM)
-   static uint32 lu32TickSystem = 0;
-   static uint8  lu8Tick5ms     = 0;
-   static uint8  lu8Tick10ms    = 0;
-   static uint8  lu8Tick20ms    = 0;
-   static uint8  lu8Tick25ms    = 0;
+   ReSimCmd_Read();
+
+   const  uint32 lu32PrescaleSystem = 100000000;
+   const  uint8  lu8Prescale5ms     = 5; //TBD: hardcode after SIL testing
+   const  uint8  lu8Prescale10ms    = 2;
+   const  uint8  lu8Prescale20ms    = 2;
+   const  uint8  lu8Prescale25ms    = 5;
+   static uint32 lu32TickSystem     = 0;
+   static uint8  lu8Tick5ms         = 0;
+   static uint8  lu8Tick10ms        = 0;
+   static uint8  lu8Tick20ms        = 0;
+   static uint8  lu8Tick25ms        = 0;
    if(lu32PrescaleSystem == ++lu32TickSystem){
       lu32TickSystem = 0;
       gu32SystemTime++;
