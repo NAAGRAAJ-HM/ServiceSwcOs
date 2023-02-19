@@ -181,7 +181,7 @@ FUNC(void, SERVICESWCOS_CODE) module_ServiceSwcOs::TASK_Idle(
    void
 ){
 #if(STD_ON == _ReSIM)
-   ReSimCmd_Read();
+   ReSimCmd_MainFunction();
 
    const  uint32 lu32PrescaleSystem = 100000000;
    const  uint8  lu8Prescale5ms     = 5; //TBD: hardcode after SIL testing
