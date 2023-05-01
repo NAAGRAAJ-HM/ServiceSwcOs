@@ -65,12 +65,8 @@ static FUNC(void, SWCSERVICEOS_CODE) Activate_Task(//TBD: make scope and accessi
    infSwcServiceEcuMSwcServiceOs_StartupTwo();
 }
 
-void infSwcServiceOsXXX_RequestShutdown(){
+void infSwcServiceOs_RequestShutdown(void){
    SwcServiceOs_bRequestShutdown = TRUE;
-}
-
-FUNC(void, SWCSERVICEOS_CODE) infSwcServiceOsSwcServiceEcuM_Shutdown(void){
-   CalloutStubsSwcServiceOs_HookShutdown();
 }
 
 FUNC(void, SWCSERVICEOS_CODE) infSwcServiceOsSwcServiceEcuM_Start(void){
@@ -80,8 +76,8 @@ FUNC(void, SWCSERVICEOS_CODE) infSwcServiceOsSwcServiceEcuM_Start(void){
    do{
       Os_Entry_TASK_Idle();
    }while(FALSE == SwcServiceOs_bRequestShutdown);
-
-   infSwcServiceOsSwcServiceEcuM_Shutdown();
+   CalloutStubsSwcServiceOs_HookShutdown();
+   infSwcServiceEcuMSwcServiceOs_Shutdown();
 }
 
 /******************************************************************************/
