@@ -1,6 +1,6 @@
 #pragma once
 /******************************************************************************/
-/* File   : Types_SwcServiceOs.h                                              */
+/* File   : Types_SwcServiceOs.hpp                                            */
 /*                                                                            */
 /* Author : Raajnaag HULIYAPURADA MATA                                        */
 /*                                                                            */
