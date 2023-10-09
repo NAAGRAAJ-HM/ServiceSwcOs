@@ -228,7 +228,7 @@ TASK(CyclicTask50ms){
 }
 
 TASK(CyclicTask200ms){
-   tsEnv_Data* PS_EnvData             = Env_GetEnvironmentData();
+   Type_SwcApplTpms_stStatusBody* PS_EnvData             = Env_GetEnvironmentData();
    uint16      ushCategoryConsistency = (uint16)(Memstack_GetCurrentNvMConsistence() & CU16_NVM_ALL_CATEG_CONSISTENT);
 
    Env_SetNvmBlockConsistency(
