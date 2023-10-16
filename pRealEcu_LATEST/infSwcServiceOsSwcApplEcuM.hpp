@@ -53,6 +53,7 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
+extern FUNC(void, SWCSERVICEOS_CODE) infSwcServiceOsSwcApplEcuM_InitFunction (void);
 extern FUNC(void, SWCSERVICEOS_CODE) Os_InitializeVectorTable                (void);
 
 /******************************************************************************/

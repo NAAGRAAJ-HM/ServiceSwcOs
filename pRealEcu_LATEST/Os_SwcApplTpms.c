@@ -1,7 +1,5 @@
 #include "Std_Types.hpp"
 
-#include "Types_SwcServiceComM.hpp"
-
 #include "Os.hpp"
 #include "Os_Cfg.hpp"
 #include "Os_ConfigInterrupts.hpp"
@@ -17,6 +15,9 @@
 #include "CanManagerX.hpp"
 #include "EnvManagerX.hpp"
 #include "RdcManagerX.hpp"
+#include "SysManagerX.hpp"
+#include "TmsManagerX.hpp"
+#include "iTpms_Interface.hpp"
 #include "DemManagerX.hpp"
 #include "EcuDiag.hpp"
 #include "DcmManagerX.hpp"
@@ -33,10 +34,9 @@
 #include "Fim.hpp"
 #include "Rte_NvM_Type.hpp"
 #include "Nvm.hpp"
+#include "Version.hpp"
 
 #include "infMcalCanSwcServiceSchM.hpp"
-
-#include "iTpms_Interface.hpp"
 
 static uint8                ucLed               = 0;
 static uint8                uc100msTimer        = 0;
@@ -76,7 +76,7 @@ ISR(CAT2ISR_Can0Transmit){
 }
 
 ISR(CAT2ISR_Wakeup){
-   infSwcServiceEcuM_vSetEventEcu(SwcServiceEcuM_eEventEcu_WakeUpByCan);
+   SYSMGR_SetEcuEvent(cECUEVENT_CAN_WAKE);
    Os_Clear_CAT2ISR_Wakeup();
 }
 
@@ -140,7 +140,7 @@ FUNC(boolean, OS_OS_CBK_IDLE_CODE) Os_Cbk_Idle(void){
 TASK(InitTask){
    HufIf_Init_Huf_SWC();
    Rdc_Init();
-   InfSwcApplTpmsSwcServiceOs_vInitFunction();
+   Tms_Init();
    Env_Init();
    CANMGR_Init();
    DemMGR_Init();
@@ -178,7 +178,6 @@ TASK(CanRecTask){
 #include "infSwcServiceDcmSwcServiceSchM.hpp"
 #include "infSwcServiceDemSwcServiceSchM.hpp"
 #include "infSwcServiceEcuMSwcServiceSchM.hpp"
-#include "infSwcApplEcuMSwcServiceSchM.hpp"
 TASK(CyclicTask10ms){
    infMcalCanSwcServiceSchM_vMainFunctionBusOff();
    infSwcServiceCanSMSwcServiceSchM_vMainFunction();
@@ -191,7 +190,7 @@ TASK(CyclicTask10ms){
    FiM_MainFunction();
    infSwcServiceEcuMSwcServiceSchM_vMainFunction();
    Memstack_Main();
-   infSwcApplEcuMSwcServiceSchM_vMainFunction();
+   SYSMGR_MainFunction();
    DCMMGR_MainFunction();
    Wdt_TriggerWD0();
    TerminateTask();
@@ -227,19 +226,13 @@ TASK(CyclicTask50ms){
 }
 
 TASK(CyclicTask200ms){
-   Type_SwcApplTpms_stStatusBody* PS_EnvData             = Env_GetEnvironmentData();
-   uint16      ushCategoryConsistency = (uint16)(Memstack_GetCurrentNvMConsistence() & CU16_NVM_ALL_CATEG_CONSISTENT);
+   tsTPMS_Data* PS_TmsStatus           = Tms_GetTmsStatusPointer();
+   tsEnv_Data*  PS_EnvData             = Env_GetEnvironmentData();
+   uint16       ushCategoryConsistency = (uint16)(Memstack_GetCurrentNvMConsistence() & CU16_NVM_ALL_CATEG_CONSISTENT);
 
-   Env_SetNvmBlockConsistency(
-      ushCategoryConsistency
-   );
-   HufIf_RCtSaTpmsData(
-      PS_EnvData
-   );
-   if(
-         CU16_NVM_ALL_CATEG_CONSISTENT
-      != ushCategoryConsistency
-   ){
+   Env_SetNvmBlockConsistency(ushCategoryConsistency);
+   HufIf_RCtSaTpmsData(PS_TmsStatus, PS_EnvData);
+   if(ushCategoryConsistency != CU16_NVM_ALL_CATEG_CONSISTENT){
       Memstack_WriteAllBlocks();
       Memstack_Appl_JobEndCallback_CAT01();
       Memstack_Appl_JobEndCallback_CAT02();
