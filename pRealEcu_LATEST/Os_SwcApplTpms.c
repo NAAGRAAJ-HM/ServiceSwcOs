@@ -34,7 +34,7 @@
 #include "Fim.hpp"
 #include "Rte_NvM_Type.hpp"
 #include "Nvm.hpp"
-#include "Version.hpp"
+#include "CfgSwcServiceStartUp.hpp"
 
 #include "infMcalCanSwcServiceSchM.hpp"
 

@@ -20,9 +20,6 @@
 
 #include "Types_SwcServiceOs.hpp"
 
-#ifndef STD_TYPES_H
-  #error "STD_TYPES_H is not defined. This should appear in Std_Types.h (AUTOSAR requirement STD014). Is Std_Types.h in the include path? (try --samples:[Includes]overwrite -ISamples\Includes)"
-#endif
 #ifndef OS_APPL_CODE
 #define OS_APPL_CODE
 #endif
@@ -319,11 +316,6 @@ typedef uint32 IdleModeType;
 typedef uint16 CoreIdType;
 typedef uint16 SpinlockIdType;
 #define INVALID_SPINLOCK ((SpinlockIdType)0)
-#ifndef STATUSTYPEDEFINED
-#define STATUSTYPEDEFINED
-  typedef unsigned char StatusType;
-#define E_OK ((StatusType)0U)
-#endif
 #define E_OS_ACCESS ((StatusType)1U)
 #define E_OS_CALLEVEL ((StatusType)2U)
 #define E_OS_ID ((StatusType)3U)
