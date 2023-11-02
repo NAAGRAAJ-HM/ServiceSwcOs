@@ -156,7 +156,7 @@ TASK(TelRecTask){
 
 TASK(CanRecTask){
    Can_RtnType tCanRecStatus = Can_ReadRxFiFo(&tRxCanFrame);
-   infMcalMcuSwcServiceSchM_vRunnableRx(
+   infMcalCanSwcServiceSchM_vRunnableRx(
       &tRxCanFrame
    );
    Os_Enable_CAT2ISR_Can0Receive();
