@@ -70,6 +70,11 @@ extern void __memory_changed(void);
   extern void os_nop(void);
   extern void Os_memclr(uint8 *dest, uint32 len);
 #else
+
+#ifndef __EDG__
+typedef int __ghs_c_int__;
+#endif
+
   extern void __CLR1(volatile char *addr, __ghs_c_int__ bitnum);
   extern void __DBTAG(int val);
   extern int __LDL_W(int *addr);
@@ -93,7 +98,14 @@ extern void __memory_changed(void);
 #define OS_SET(addr, bit) __SET1(addr, (int)bit)
 #define OS_STSR(reg, bank) __STSR((int)reg, (int)bank)
 
-  void os_trap(uint32 value);
+void os_trap(uint32 value);
+void os_nop(void);
+#if CfgProject_dSwitchReSim
+void os_trap(uint32 value){
+   UNUSED(value);
+}
+void os_nop(void){}
+#else
 __asmleaf void os_trap(uint32 value)
 {
 %con value;
@@ -102,11 +114,12 @@ __asmleaf void os_trap(uint32 value)
   Macro has not expanded so it should result in error
 }
 
-  void os_nop(void);
 __asmleaf void os_nop(void){
   nop
 }
 #endif
+#endif
+
 #define OS_BARRIER() __memory_changed()
 #define OS_DI() __DI()
 #define OS_EI() __EI()
@@ -119,6 +132,9 @@ __asmleaf void os_nop(void){
 #define OS_SYNCM() __SYNCM()
 #define OS_SYNCP() __SYNCP()
 #define OS_TRAP(val) os_trap(val)
+
+#if CfgProject_dSwitchReSim
+#else
 #ifdef _lint
 #else
 #pragma asm
@@ -131,11 +147,14 @@ __asmleaf void os_nop(void){
 #if(__V800_registermode==32)
     .set  regframe, 21
 #endif
-
     .set  framesize, regframe*4
 #pragma endasm
+#endif
 
 void OS_FETRAP_ENTRY(void);
+#if CfgProject_dSwitchReSim
+void OS_FETRAP_ENTRY(void){}
+#else
 asm void OS_FETRAP_ENTRY(void){
     -- isr prolog
     -- 22 reg mode: save 15 registers + FEPSW + FEPC
@@ -174,8 +193,12 @@ asm void OS_FETRAP_ENTRY(void){
    sst.w     r19, (framesize-80)[ep]
 #endif
 }
+#endif
 
 void OS_FETRAP_LEAVE(void);
+#if CfgProject_dSwitchReSim
+void OS_FETRAP_LEAVE(void){}
+#else
 asm void OS_FETRAP_LEAVE(void){
     mov       sp, ep
 #if(__V800_registermode==32)
@@ -201,18 +224,16 @@ asm void OS_FETRAP_LEAVE(void){
    sld.w     (framesize-24)[ep], r5
    sld.w     (framesize-20)[ep], gp
    sld.w     (framesize-16)[ep], r2
-
-    di
+   di
    sld.w     (framesize-12)[ep], r1
-    ldsr      r1, FEPC, 0
-
+   ldsr      r1, FEPC, 0
    sld.w     (framesize-8)[ep], r1
-    ldsr      r1, FEPSW, 0
-
+   ldsr      r1, FEPSW, 0
    sld.w     (framesize-4)[ep], r1
-    dispose   regframe, {ep-lp}
-    feret
- }
+   dispose   regframe, {ep-lp}
+   feret
+}
+#endif
 
 #define OS_PRAGMA(x) _Pragma(#x)
 #endif
@@ -247,11 +268,18 @@ typedef sint32 Os_jmp_buf[13];
 typedef sint32 Os_jmp_buf[16];
 #endif
 #endif
+
+#if CfgProject_dSwitchReSim
+typedef sint32* Os_jmp_buf;
+extern                                    void Os_longjmp(Os_jmp_buf env);
+#else
 extern __attribute__((noinline,noreturn)) void Os_longjmp(Os_jmp_buf env);
+#endif
+
 extern sint32 Os_setjmp(Os_jmp_buf env);
 
 #ifndef OS_CONST
-  #error "OS_CONST is not defined. This normally appears in Compiler_Cfg.h or Os_Compiler_Cfg.hpp"
+#error "OS_CONST is not defined. This normally appears in Compiler_Cfg.h or Os_Compiler_Cfg.hpp"
 #endif
 #ifndef OS_CONST_FAST
 #define OS_CONST_FAST OS_CONST
@@ -268,6 +296,10 @@ typedef uint32 Os_StackSizeType;
 extern Os_StackValueType Os_GetSP(void);
 #else
 Os_StackValueType Os_GetSP(void);
+
+#if CfgProject_dSwitchReSim
+Os_StackValueType Os_GetSP(void){return 0;}
+#else
 __asmleaf Os_StackValueType Os_GetSP(void){
 %reg
   mov  r3, r10
@@ -276,6 +308,8 @@ __asmleaf Os_StackValueType Os_GetSP(void){
 %mem
   mov  r3, r10
 }
+#endif
+
 #endif
 
 typedef void (*Os_VoidVoidFunctionType)(void);
