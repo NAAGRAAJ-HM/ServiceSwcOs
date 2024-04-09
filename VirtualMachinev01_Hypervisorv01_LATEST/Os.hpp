@@ -106,8 +106,7 @@ void os_trap(uint32 value){
 }
 void os_nop(void){}
 #else
-__asmleaf void os_trap(uint32 value)
-{
+__asmleaf void os_trap(uint32 value){
 %con value;
   trap value
 %error

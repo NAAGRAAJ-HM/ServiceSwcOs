@@ -94,8 +94,7 @@ extern void __memory_changed(void);
 #define OS_STSR(reg, bank) __STSR((int)reg, (int)bank)
 
   void os_trap(uint32 value);
-__asmleaf void os_trap(uint32 value)
-{
+__asmleaf void os_trap(uint32 value){
 %con value;
   trap value
 %error
