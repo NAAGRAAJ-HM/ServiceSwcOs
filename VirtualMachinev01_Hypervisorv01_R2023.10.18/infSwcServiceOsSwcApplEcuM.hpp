@@ -1,8 +1,8 @@
 #pragma once
 /******************************************************************************/
-/* File   : Types_SwcServiceOs.h                                              */
+/* File   : infSwcServiceOsSwcApplEcuM.h                                      */
 /*                                                                            */
-/* Author : Raajnaag HULIYAPURADA MATA                                        */
+/* Author : Nagaraja HULIYAPURADA MATA                                        */
 /*                                                                            */
 /* License / Warranty / Terms and Conditions                                  */
 /*                                                                            */
@@ -14,7 +14,7 @@
 /* certain responsibilities, if you distribute copies of the software, or if  */
 /* you modify it: responsibilities to respect the freedom of others.          */
 /*                                                                            */
-/* All rights reserved. Copyright © 1982 Raajnaag HULIYAPURADA MATA           */
+/* All rights reserved. Copyright © 1982 Nagaraja HULIYAPURADA MATA           */
 /*                                                                            */
 /* Always refer latest software version from:                                 */
 /* https://github.com/RaajnaagHuliyapuradaMata?tab=repositories               */
@@ -24,15 +24,11 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "CompilerCfg_SwcServiceOs.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define OS_NOAPPMODE                            ((Type_SwcServiceOs_tModeApp)0U) //TBD: enum
-#define OSDEFAULTAPPMODE                        ((Type_SwcServiceOs_tModeApp)1U)
-
-#define c_IRQ_ACTIVE                                                           1
-#define c_IRQ_NOT_ACTIVE                                                       0
 
 /******************************************************************************/
 /* MACROS                                                                     */
@@ -41,7 +37,6 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-typedef uint32 Type_SwcServiceOs_tModeApp;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -58,6 +53,8 @@ typedef uint32 Type_SwcServiceOs_tModeApp;
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
+extern FUNC(void, SWCSERVICEOS_CODE) infSwcServiceOsSwcApplEcuM_InitFunction (void);
+extern FUNC(void, SWCSERVICEOS_CODE) Os_InitializeVectorTable                (void);
 
 /******************************************************************************/
 /* EOF                                                                        */
